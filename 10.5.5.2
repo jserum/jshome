@@ -1,0 +1,368 @@
+# fpc0:
+# --------------------------------------------------------------------------
+# Model: ex2300-c-12p
+# Junos: 18.2R3-S2.9
+# JUNOS OS Kernel 32-bit  [20191022.14c2ad5_builder_stable_11]
+# JUNOS OS libs [20191022.14c2ad5_builder_stable_11]
+# JUNOS OS runtime [20191022.14c2ad5_builder_stable_11]
+# JUNOS OS time zone information [20191022.14c2ad5_builder_stable_11]
+# JUNOS py extensions [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS py base [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS OS crypto [20191022.14c2ad5_builder_stable_11]
+# JUNOS network stack and utilities [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS libs [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS runtime [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS Web Management Platform Package [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS ex libs [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS ex runtime [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS ex platform support [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS dcp network modules [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS modules [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS ex modules [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS ex Data Plane Crypto Support [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS daemons [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS SDN Software Suite [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS Extension Toolkit [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS Phone-home [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS Packet Forwarding Engine Support (EX34XX) [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS jdocs ex [20191115.190104_builder_junos_182_r3_s2]
+# JUNOS jail runtime [20191022.14c2ad5_builder_stable_11]
+# JUNOS FIPS mode utilities [20191115.190104_builder_junos_182_r3_s2]
+# Hardware inventory:
+# Item             Version  Part number  Serial number     Description
+# Chassis                                HV3620180004      EX2300-C-12P
+# Pseudo CB 0
+# Routing Engine 0          BUILTIN      BUILTIN           RE-EX2300C-12P
+# FPC 0            REV 19   650-059984   HV3620180004      EX2300-C-12P
+#   CPU                     BUILTIN      BUILTIN           FPC CPU
+#   PIC 0          REV 19   BUILTIN      BUILTIN           12x10/100/1000 Base-T
+#   PIC 1          REV 19   650-059984   HV3620180004      2x10G SFP/SFP+
+# Power Supply 0                                           JPSU-170W-AC
+# License usage: none
+# 
+# Licenses installed: none
+# 
+## Last commit: 2022-05-30 04:07:34 UTC by root
+version 18.2R3-S2.9;
+groups {
+    phcd_user_script {
+        system {
+            scripts {
+                op {
+                    allow-url-for-python;
+                }
+                language python;
+            }
+        }
+    }
+}
+apply-groups phcd_user_script;
+system {
+    login {
+        user oxidized {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$6$LJoxnJ6e$I8hxm1oxRD27CHihglGQjnUJCVvBLnBLN.vqZ/je0s/DdwiHYoGICRw7rVSARDxcTTuOlSac5egEqQ4GpWNcG0"; ## SECRET-DATA
+            }
+        }
+    }
+    root-authentication {
+        encrypted-password "$6$1Ao1Nuhi$JfX5Yj2V7zkgQTK.4ouY6339jdKeEEnxfzmvSnpU8M8L7t1rZG9pLUFJul32xBobn.fOWZP0pN8DkSG0LDSxV."; ## SECRET-DATA
+    }
+    auto-snapshot;
+    services {
+        ssh {
+            root-login allow;
+            protocol-version v2;
+        }
+        telnet;
+        netconf {
+            ssh;
+        }
+        web-management {
+            http;
+        }
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any any;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+        file interface-logs {
+            match ifOperStatus;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag all;
+            }
+        }
+    }
+    phone-home {
+        server https://redirect.juniper.net;
+        rfc-compliant;
+    }
+}
+chassis {
+    redundancy {
+        graceful-switchover;
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members cameras;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members cameras;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members desktops;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/4 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/5 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members desktops;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/6 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/7 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/8 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/9 {
+        native-vlan-id 1;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members all;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/10 {
+        native-vlan-id 1;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members all;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/0/11 {
+        native-vlan-id 1;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members all;
+                }
+                storm-control default;
+            }
+        }
+    }
+    ge-0/1/0 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    xe-0/1/0 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    ge-0/1/1 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    xe-0/1/1 {
+        unit 0 {
+            family ethernet-switching {
+                storm-control default;
+            }
+        }
+    }
+    irb {
+        unit 0 {
+            family inet {
+                address 10.5.5.2/24;
+            }
+        }
+    }
+}
+snmp {
+    view all {
+        oid .1;
+    }
+    community shomeRO {
+        view all;
+    }
+}
+forwarding-options {
+    storm-control-profiles default {
+        all;
+    }
+    analyzer {
+        cctv {
+            input {
+                ingress {
+                    interface ge-0/0/1.0;
+                }
+            }
+            output {
+                interface ge-0/0/0.0;
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 10.5.5.1;
+    }
+}
+protocols {
+    lldp {
+        interface all;
+    }
+    lldp-med {
+        interface all;
+    }
+    igmp-snooping {
+        vlan default;
+    }
+    rstp {
+        interface ge-0/0/0;
+        interface ge-0/0/1;
+        interface ge-0/0/2;
+        interface ge-0/0/3;
+        interface ge-0/0/4;
+        interface ge-0/0/5;
+        interface ge-0/0/6;
+        interface ge-0/0/7;
+        interface ge-0/0/8;
+        interface ge-0/0/9;
+        interface ge-0/0/10;
+        interface ge-0/0/11;
+        interface ge-0/1/0;
+        interface xe-0/1/0;
+        interface ge-0/1/1;
+        interface xe-0/1/1;
+    }
+}
+poe {
+    lldp-priority;
+    interface all;
+    interface ge-0/0/3 {
+        disable;
+    }
+    interface ge-0/0/10 {
+        disable;
+    }
+    interface ge-0/0/11 {
+        disable;
+    }
+    interface ge-0/0/9;
+}
+vlans {
+    cameras {
+        vlan-id 100;
+    }
+    default {
+        vlan-id 1;
+        l3-interface irb.0;
+    }
+    desktops {
+        vlan-id 15;
+    }
+    guest {
+        vlan-id 25;
+    }
+    iot {
+        vlan-id 30;
+    }
+    kids {
+        vlan-id 20;
+    }
+    mgmt {
+        vlan-id 5;
+    }
+    servers {
+        vlan-id 10;
+    }
+}
