@@ -5980,9 +5980,10 @@ config system automation-stitch
     next
 end
 config system federated-upgrade
-    set status initialized
+    set status downloading
     set source auto-firmware-upgrade
     set upgrade-id 42
+    set ha-reboot-controller "FGT60FTK20008931"
     config node-list
         edit "FGT60FTK20008931"
             set timing immediate
@@ -7112,92 +7113,92 @@ config vpn certificate ca
 end
 config vpn certificate local
     edit "Fortinet_CA_SSL"
-        set password ENC 6VGgM7k6h16xUjtB9JwINJH5LNyLC8sNPT3OCfBPNS1J2nFVoP59YTF3fkQDtjuBcVRd1yH81yknPuT3MOnl5E1jiYkrMG4XGmYFrzZ+BzYgtGRB3JKCK/mrJz+RfcCV3z2RPNAFrI2bBxgLFvy0dbZYF1Zei9As617wijn6O3+ZiueRal6kfNY4heSSmHWj1CyiTA==
+        set password ENC z7/3S2oUnq0kPZLEmT1DERnQfV7/z+Pz5G09ps7Fw4xtvhLHJ3rg3Lws1xpsgAiOpaEQWAsl1cR82LFhnHB8tIR6X8zsBz7aaU4WsTzMJH4keyf+oI4gGfkFUGypscUmGkP/QHj1gzTtIfC6dhV8n/3uLsVASp/EWFyUyh+1LRzeMo53TuB5JG9aDtFXD34osZFiOA==
         set comments "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
         set range global
         set source factory
     next
     edit "Fortinet_CA_Untrusted"
-        set password ENC 9C0FeN1/FqxClMFetZgrGOJokClSAXoqTiNXq03FJ4B6zwW0grOCphpcNSXuqIwtncFR1A5KCqkLaFOpbPmLVgzen3b/9DlNGg2G4TGBHGMV+pdIujT39mecr3fs5hjyXN5zbcZFKPxrA5zf9AMjc1rtd/VlUGevBiu27qKe2ZCADEczvJUO7DVEF2rD+PFUVb1lzQ==
+        set password ENC vPbQuHSq9TdHBfXteDqTmMIR/yr3z/eoWDVMgCwR+8VZuaMZVZiRdv3AmoYETbwehiCyo8NFUZfNRc1PXAkIy9eh48JFANFDnKvG963RNranWlyQkf6eX0WTC6aUtf7qC7SI0MEKzQVPr+EwYSFlv126Fy02/syi4mIq8q+Q4cQfsvcHSMQ5wx+t0XNaFveE2dWRzQ==
         set comments "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
         set range global
         set source factory
     next
     edit "Fortinet_SSL"
-        set password ENC iFem6FnUZek457pCiONkCHd+4eSHvEshCL49jA4lBoj1Hi3Ba4MD55aXhl3sS+DV+fl9bXVjgqSFFWeW4FTj1UBuMwta3cqTiu362r2EjhsmW0oNKyZXMNH0zRqMkhGwvQeK+YXJa5uh5oS1WFKmHtBypo2wekSHu8YPNL4jGB8CwPk/ckr5kEnSwysisDhNX6snyg==
+        set password ENC OX/fH4uHLgEBQhyBKbJNun83FIA4XF6OY4JyDJPGh/l9CnyAacz4yXkgRUxjI/48dnEDp++xspKkVu/Ukng6zPQs1HZfPY7t/9g0oykGlsOj7ktUcFs87DvXPkWVsoZxitTYHH9VcedwY2D7jwmXfcnQ/tv2hpaEYeYfEIUZDk6fBV++By9RNCVY6n5uYHQXIK2cBw==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_GUI_Server"
-        set password ENC PNU+X5Qx72zfS95MKQuVxLuctGGXae/mBi/Yrnl9cG9D+cX83INVXOUiL4L705vyfxoAVFuNl1xPKnaQjBXpgkSKxJD/L93LH/vf30bfxKk/d7nm6UcCvZgoYy46VQ4l1QKqzDXbnI9E+i+WfyXGKhMiXpjAYg+HME/sCUl+XZ1WdbNzfa3TYl/jIC7/Fg4BzF7MUw==
+        set password ENC HH6l9S5JXZgsKtFTpenz81AmmTt3FauJ5OkO0dFY23jwk7TkdkG6D42tdx7SGXkZSW299u5MeXkekSQ1fh4vCigDKkfulm9qiyMmaff+/K0Q0K8pQGVsM6mK2i7Hb5Jg7IidrZekl7B4uBmzMrQh0vimQMluStyRv7KfB0EJ2n+FWCdaVfBj/BcAl4qgeU3pLcYpaA==
         set comments "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
         set range global
         set source factory
     next
     edit "Fortinet_SSL_RSA1024"
-        set password ENC NFXcbqejuMrsEYMvT7wGZWvpCfNrjXpn9m+INV0XYRgR2qT1BhRwe8uPhUgzeQ272gtM5zy5ZnGJ+3i1b1acriGSB12SPwJSJ8XV9fyKpQQ9IzQvVjiKm3q6ElEkmvY+J+SQIM0SFkFQz+U3VD1YeqYwvlNLqf6X/oMIxPFmBYAowT0g1SJA7yTlr/Z25XOIeFUmjw==
+        set password ENC kEKUmyrOfBUObzAW7DrtQbQrPEoEnoLj02Kx7gdoQSlwmCQUnLA7JtJHEONPsxdUlmzszbGEmdypaMcQDQd5E/tfuEdcc5RQ0D0iJnX5Lyx2M6Yt+SyPnHPc780GanVyELaWah9xyEu+RZ0AV/PINCN/lArb4cCTHZxezfW9CSGLKC5Yg/vnxlB4FTWtEmYUldauMQ==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_RSA2048"
-        set password ENC 1hyAE2h478J1xtsmJbENcLLIcG3BsIxqQmAczL68yWOzK+0PIpb/qmDIeBVXRnLh3oMWyYSmGoGmdC8ucj8IEs7suQaODx5IQXI5CQlWimApU5rYHA/Y9qtqoVxi/LQEXMW3AfPuVZiNMHVxiqdCzUK/WJhWdGcLF6/icU6j4z4ZfJKjIAbnQyhsBRLqb9vLxBE0dQ==
+        set password ENC bYeTD4mw4ZZDm4MYFNcRLWS07GN7H/5+a9BnQksMejPNGMZ84owx0QGhNNV8+WjMAao9AEsLX6aahD0xa2Rido/o5WjDNiZ5Figz2VkskAKd9liP3SmUtUhlRjtlnFKw63jqCAmQ0G3qWmAz4NmgQ+xFMwnsp07PYCwVI7SdWUO7f83haqkny3Sk9uxBecZvNL138A==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_RSA4096"
-        set password ENC Zn5d5FJ6U8ewKanubD/650BT8N76hu/+fUw/UtA+nzi9CBxYLwv1AniJnCvrRN4X/xwvMs9kLXSpt2q6EGNpEzYF4l0jhHByEf1uALGeZArGBBUjvsX1Wb33iOnchqzCCvmTDxwB6U+suebdgXpBx8DxZ9kW8WGI83Pt0vzstMlRv7H/DqIH3IvMdBHLojRfmf5yXQ==
+        set password ENC NlTZrkNAVG0K/Bje8LQ7Gl0s704bdZUcjzuLuQOsEqnOeS3WKWxlxqcz/plKKLJ+MCRqSXfJ5OVTuiF06hjl6O+fEdZqIoOUEvQQZzPqKuMn++JZMZ+kJeIyMqM97PFsLIzjgUa/ALlD+S7qtLWAfj2CjBLoKj2+Kd9r9j2J85wEiFpXufp7W93ItUKK30RBtywrQQ==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_DSA1024"
-        set password ENC QPoYw2r9S95xHSTMCxG0ClKpcs0aJIOTRpnbCS0NlQt8HbVSs82jtVNG4jWkPZXQ6CSgKesq6lVOPM8vfwItnBxzXcCPxKBgdncZd3iRxMuemV/GxcPPwaP055MNyNxSdXqXu8PXsNVJdvhEzlns5VhC23OAm6eGYy3FJ8ec0hthn63HkhvikS012BLk9HenkDQd7A==
+        set password ENC KbCFIrjvSGCWM4xyyBjWd+k6YQlUOhAzWDlPxF+41gPoupF0CdjmzIWkfIQWKkqisgB18wT8NnHAyITnFwPaEbC1BtJFVDmC69jm1KqYjPH7TaJnMBjnBHoJQebAgFkH0WmMdL3x75WxXnBtVFvvDBo9iapT5g9ApMhMGitAhVwavxl7+3Z1e9ZSubnjBhQSjv4zng==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_DSA2048"
-        set password ENC JeccVCo4kyT3UOdRUOqToDliJN9A2nIPApUgZh/NwRtcfl0VNgCl3AguhsglYwuV+s5AjjCiNE+d/8zagnSG3IDU++mD1H2ZThcMx+kJoI+iZJn6/fW9H5mt1MG8EMZWjIL0EUAtmTVXlbR9CBTkSMboQf6f0I3z22tJENKNlfpekcSC3MSxoB1rg9BpIJkWZ2RCJQ==
+        set password ENC hb68fbYYuE/H81u4xIBUdazQuDIcRAaqIlyXHOjB28OYYEI0B3R7auK8yrFQHDh8NnbhmJo3QqAEXFVrXukKnTwBTwfBIVyXTzWie6HEaMWhUkHvhXdcHmVxdctDBN2D1WkjgkaLfdb8s+oXNCqAft0O9ybbZwSdCr8x6rt1XUq8PcOvJPVtRCM7sO6Tq2QChmo0eg==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_ECDSA256"
-        set password ENC dJBHiBYDNpFu4Txay+qYBjdRYOmCM2Q8Bf+SBqAeEziqSwugFtcNlhjR2vrawpIWbfihs1ILqARWmqqbDHkAyBaH1Qnnt33r1GzlGRXouUQnl+/0vaEFGHiNcLJMyRGrUgR/ZmjbZMco0iJfS47fQ7in7/6MFDIKgh+j3V4ohlexXRdZxWiSFv5aua333bDBcv++xA==
+        set password ENC sVazJsV5wQkYwUzAReuwTB/a1XuJeBtz8oFFbVi3yV+NCoZix4lIDk5Q/NlROB7gwngqaFKm61dsmHbQRhrHjPA2eXZDEfg8f5NtLa8x5Moi7ABqdYQvQUfbDKl8qzyFaX5JoJevM7GLz/PYEUqURIIgr4cgoFFFbiqelp79kXLChIbTdywy+/ezFjfKHPxVPYEs0A==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_ECDSA384"
-        set password ENC oj51qJ1AhkhpUOVgQts1ceAwBqcpkDpeSd7+CGpC1ga0cCnCC9t9VSflRlqAoyxs8y4epU33IJAqsDj3Sw4muIYNZqN6q34b8m3EONZUIPw/hKZZPbrvcWOZ9CEe4I5akW4nkUf06bJggxOJP3cXw0nRBbvVnsToSKvzXIG/HChZ3MBUpEN6d+9D7M6cgybiC9w2mQ==
+        set password ENC 5YmAgJ8R9N/yUv1rNLrrtZTcRml5wcX1N6yP6w8dOBtk3XPeujHHtAJmXlA+9nsegWIhSFtuPMFjl6KMPNLecxyT9oMtBc4OH6TyXDsRjPXS5mApOGbzTThVyHOoRzz/3IUAIKDInINaw6uRIIl2cIcIL5t2YWwF+08zBywPUBgjhmqJq5ridhbKyGhpoPE/fJadRA==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_ECDSA521"
-        set password ENC tszwYYp6NcjTQUquT2rILrD0ofgw/379xBHQ6fMWC7RIauqWb1pnqFne+lMBOBKLXjBz1jf/r03T6Tt1PXNVLvMr0LM6OIUvtNyYQicv4g6cLHVRQ0qeOKElfdmZvDn0ybKnHm+wgUorCHx7NHbMelmF0wt2fbdCFIF8tgBwAgN8n4C1RIFZ5dJnCbadIOhSHHvBjA==
+        set password ENC QQmdbm+AnODpvWO2BitloLfODnqtd1McRJCaV55iqiVBC8UL0ukezZx1ShpfqbVX/0GQTw2QYcS4fTYp5B5u1oRrkijXqhkfH+sMzmvHxicrbg2/1ZgBGjeLisIDHTYJH8YcXwzGyYEaAACYMs0zmfWTGIMCim1PoPd8RX8N6zZfeOerQxvHP0fpBkU3tONr2DuUSA==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_ED25519"
-        set password ENC /m8BaHK3yafmFUapY3dCFDgOTMaHDlBxhMSAxEidbzjOC1mj/qFShqeLbzmb7p2V1ObHOVxmlW/QL97cUlSZVaAgdE5XOGSMqJfSkOLj0z1TL2puVboUK0IPae6sQvvBqZPOsPLI9294ptSs+dIznr3NV5SF8x4BtXnNLPR02bgNYQZP5HzKz1/ibk2RIx2fkqB3hg==
+        set password ENC eoCNig0iBOG/ao2/6M8G/HfS/KbU+yYxUAfr3rN3d7YZItPjC9o4Kj50ZGB935rWCf+F8/2g22f8Gn8kXi/e+w0GM2Y8Vq+mplrI+L17FcW3O/zx8Fc/60v2jH4V40KnT6cfuX2jbKzyyFxMq60jmBZYSoTL4ZZuR0znWoBvS7uKF2x5+tfWfQ/4fVpfJE9rixjN3Q==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Fortinet_SSL_ED448"
-        set password ENC kjyr44Jx1noZ275nh8KXn70E+fFA9CrdgHk9ST4/tlRgdJ8xNPrbD68ozB42w2UVc9NF1cQbUW0OmaH2L2+1EP+lmpcklb5+oxxVvLXB5gJKgeq4kIXRaXnax/Xe8dq7r3eCKOS3raA5qAjvbamiuBlsVeeLJi6caKVOyIy2grLs4dtPxGltHSTCeYIWrBysWYlWVg==
+        set password ENC KFMxtmD2zFE/7oY+NcYY6+nwlnmObPdZOdxUc3lDXoYCvgGC/MW/YL6MKOCg6bi7wkeIZnqVcbzu34ub80BnzjLO9EU/mk2KUoZyx2aNKvvEGwzxGikUbkDsnY7uliQSP6Wjq5M2HdMBrBb3RlGsZwW1Xy90s0fc81ic8IcoOw2Crmb5PQLugPaV6TY7cGHMxAYz4w==
         set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
         set range global
         set source factory
     next
     edit "Backup SSL VPN"
-        set password ENC sJBz1olPG3eyka0qR2d3AMdksNsoiNsIwguFdYhM9l2IeK0Lgm9SN/s/CR15Ixukcj348iKXt5Jfgp3djN3its+hpRwWPA0yPTEe/LVd5fJfw8Rq6RD4oGDVRJksNytfKpdAjU4k3eqI9zU323jtUsnDkPrsRBz8ndSzFI3AvrvOUjfhWPS8DhOape0ugU1uz1HrKQ==
-        set comments "Error (Your account is temporarily prevented from requesting certificates for jserum.duckdns.org and possibly others. Please visit: https://portal.letsencrypt.org/sfe/v1/unpause?jwt=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJTRkUgVW5wYXVzZSIsImV4cCI6MTc3NDkxNjkxNSwi on Tue Mar 17 00:28:35 2026 (UTC)"
+        set password ENC kn1fdjqQ6fkOIGZ1PuaeDYWp5rSTIGposrAQ4qNKh666/bm/ySJbKdWnHOKee8iB/A3s4QhBahwss4ClZMpp0JgqEUZipNzZbKJgUub9W9jyN+pks74IxX5gzWLhp8bmkFI5IkicoAJT4Xsh2i1sqcm/ByJwh1pKkW6wuaHmkL8QNyrcjGZjQBikXqkd8JUwCIbjiA==
+        set comments "Error (Your account is temporarily prevented from requesting certificates for jserum.duckdns.org and possibly others. Please visit: https://portal.letsencrypt.org/sfe/v1/unpause?jwt=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJTRkUgVW5wYXVzZSIsImV4cCI6MTc3NDkzOTQ2OSwi on Tue Mar 17 06:44:29 2026 (UTC)"
         set range global
         set enroll-protocol acme2
         set acme-domain "jserum.duckdns.org"
